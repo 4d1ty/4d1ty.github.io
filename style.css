@@ -34,8 +34,6 @@ a {
 
 a:hover {
     text-decoration: underline;
-    transform: scale(1.05);
-    transition: transform 0.15s ease;
 }
 
 
