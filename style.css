@@ -65,6 +65,26 @@ iframe {
     font-style: italic;
 }
 
+.nav{
+    display: flex;
+    column-gap: 10px;
+    justify-items: center;
+    text-align: center;
+    margin: 1em;
+}
+
+code>pre{
+    background-color: var(--code-block-background);
+    padding: 1em;
+    text-wrap: initial;
+    border-radius: 4px;
+}
+
+blockquote.output{
+    font-style: normal;
+    font-weight: bolder;
+    color: var(--text-color);
+}
 
 :root {
     --bg-color: #fff;
@@ -74,6 +94,7 @@ iframe {
     --blockquote-border-color: #ccc;
     --blockquote-text-color: #555;
     --aside-text-color: #666;
+    --code-block-background: #ebebeb;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -85,5 +106,6 @@ iframe {
         --blockquote-border-color: #444;
         --blockquote-text-color: #aaa;
         --aside-text-color: #bbb;
+        --code-block-background: #202020;
     }
 }
