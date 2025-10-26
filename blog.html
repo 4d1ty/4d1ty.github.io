@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+    <meta property="og:title" content="Blog \ Aditya Priyadarshi" />
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="nav">
+        <a href="/">~/home</a>
+        <a href="/blog.html">~/blog</a>
+    </div>
+</body>
+<h1>Blog</h1>
+
+
+<ol>
+    <li>
+        <h3 id="why-do-the-c-plus-plus-standard-library-does-not-have-a-function-to-lowerupper-case-a-std-string">
+            <a href="#why-do-the-c-plus-plus-standard-library-does-not-have-a-function-to-lowerupper-case-a-std-string">
+                Why do the C++ Standard Library does not have a function to lower/upper case a <code>std::string</code>?
+            </a>
+        </h3>
+        <time datetime="26-10-2025">26 October, 2025</time>
+        <p>
+            As we know the C++ is one of the old languages (officialy renamed from C with classes to C++ and released
+            during 1983).
+            During all this year this language has been matured very much.
+            But still within all this, this language does not have a simple <code>std::string::tolower()</code> or
+            <code>std::string::toupper()</code> methods for string manuplation.
+            <br>
+            I mean even C <code>&lt;string.h&gt;</code> have a <code>char *strlwr(char *str)</code> and
+            <code>char *strupr(char *str)</code> function, now I know what you are gonna say that.
+        <blockquote>Why don't you just take a <code>std::string</code> and use the <code>.c_str()</code> method and use
+            <code>strlwr</code> or <code>strupr</code> on it.
+        </blockquote>
+        <br>
+        But let me tell you, the value returned by the <code>.c_str()</code> is a <code>const char*</code>, that means
+        you can't mutate the value of the string, sure you can use <code>strcpy</code> and copy the value to another
+        variable,
+        but it will only cause extra overhead.
+        <br>
+        So what other ways are left for us?
+        <ol>
+            <li>We can either iterate through the string and use a function called <code>tolower(char c)</code></li>
+            <li>
+                We can use <code>std::transform</code> from <code>&lt;algorithm&gt;</code> library to change the case of
+                the string in one go
+            </li>
+        </ol>
+        Both methods are great, but the first iterative methods is kinda verbose and less used now days.
+        <br>
+        The second methods looks like this:
+        <code>
+            <pre>
+#include &lt;algorithm&gt;
+int main() {
+    std::string sampleLower("this is a lower string");
+    std::transform(sampleLower.begin(), sampleLower.end(), sampleLower.begin(), toupper);
+    return 0;
+}</pre>
+            This will output:
+            <blockquote class="output">$ THIS IS A LOWER STRING</blockquote>
+        </code>
+        The <code>transform</code> takes 4 parameters
+        <ul>
+            <li>
+                start: the start iterator from where you want to start the transformation
+            </li>
+            <li>
+                end: the ending iterator till where you want to end the transformation
+            </li>
+            <li>
+                output start: the start iterator to where the transformed output will be sent to, in out case its the
+                same string we are transforming
+            </li>
+            <li>
+                unary operator: function object that will be applied in the transformation, like <code>toupper</code> or
+                <code>tolower</code>
+            </li>
+        </ul>
+        Now the thing it, that this lowering and capatilization only works ASCII characters, for the unicode characters
+        it might fail, so you will need to use <code>std::wstring</code> for the extra wide enicodes such as &eacute; or
+        &aacute;, etc.
+        <br>
+        <br>
+        Now compared to other language like Python, which have simple <code>str.lower()</code> or
+        <code>str.upper()</code> methods which makes the work easy, but still, C++ is a go to language for writing fast
+        performant systems code.
+        <hr>
+        The full example can be found <a href="/code/string-case-transform-example.cpp">here</a>
+        </p>
+        <strong>References / Citation</strong>
+        <cite>
+            <ol>
+                <li>
+                    <a
+                        href="https://stackoverflow.com/a/313990/31691327">https://stackoverflow.com/a/313990/31691327</a>
+                </li>
+                <li>
+                    <a
+                        href="https://notfaq.wordpress.com/2007/08/04/cc-convert-string-to-upperlower-case/">https://notfaq.wordpress.com/2007/08/04/cc-convert-string-to-upperlower-case/</a>
+                </li>
+                <li><a
+                        href="https://en.cppreference.com/w/cpp/algorithm/transform.html">https://en.cppreference.com/w/cpp/algorithm/transform.html</a>
+                </li>
+            </ol>
+        </cite>
+    </li>
+</ol>
