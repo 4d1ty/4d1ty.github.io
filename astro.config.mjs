@@ -8,4 +8,7 @@ import { defineConfig, fontProviders } from 'astro/config';
 export default defineConfig({
 	site: 'https://4d1ty.github.io/',
 	integrations: [mdx(), sitemap()],
+	prefetch: {
+		prefetchAll: true
+	}
 });
