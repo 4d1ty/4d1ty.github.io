@@ -1,0 +1,118 @@
+/* nope */
+
+body {
+    font-family: system-ui, sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.5;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    text-wrap: initial;
+    padding: 20px;
+
+}
+
+#pfp {
+    transition: transform 0.2s ease;
+}
+
+#pfp:hover {
+    transform: scale(1.1) rotate(5deg);
+    cursor: pointer;
+}
+
+
+h1,
+h3,
+h4 {
+    color: var(--heading-text-color);
+    margin-top: 2rem;
+}
+
+a {
+    color: var(--link-text-color);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+cite{
+    text-wrap: initial;
+
+}
+
+ol li,
+ul li {
+    margin-bottom: 0.5rem;
+}
+
+
+blockquote {
+    border-left: 3px solid var(--blockquote-border-color);
+    padding: 0.5rem 1rem;
+    color: var(--blockquote-text-color);
+    font-style: italic;
+    margin: 0.5rem 0;
+    background-color: rgba(0, 0, 0, 0.03);
+}
+
+
+img,
+iframe {
+    margin: 0.5rem 0;
+    border-radius: 4px;
+}
+
+.aside {
+    font-size: 0.9rem;
+    color: var(--aside-text-color);
+    font-style: italic;
+}
+
+.nav{
+    display: flex;
+    column-gap: 10px;
+    justify-items: center;
+    text-align: center;
+    margin: 1em;
+}
+
+pre{
+    background-color: var(--code-block-background);
+    padding: 1em;
+    text-wrap: initial;
+    border-radius: 4px;
+}
+
+blockquote.output{
+    font-style: normal;
+    font-weight: bolder;
+    color: var(--text-color);
+}
+
+:root {
+    --bg-color: #fff;
+    --text-color: #222;
+    --heading-text-color: #333;
+    --link-text-color: #0070f3;
+    --blockquote-border-color: #ccc;
+    --blockquote-text-color: #555;
+    --aside-text-color: #666;
+    --code-block-background: #ebebeb;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-color: #121212;
+        --text-color: #e0e0e0;
+        --heading-text-color: #f0f0f0;
+        --link-text-color: #1e90ff;
+        --blockquote-border-color: #444;
+        --blockquote-text-color: #aaa;
+        --aside-text-color: #bbb;
+        --code-block-background: #202020;
+    }
+}
